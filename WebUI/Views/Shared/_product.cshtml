@@ -1,0 +1,23 @@
+﻿@model Entities.Product
+
+<div class="col-md-4">
+    <div class="card mb-3">
+        <img src="http://www.pngall.com/wp-content/uploads/5/Apple-iPhone-12-PNG-Download-Image.png" alt="@Model.Name">
+        <div class="card-body">
+            <h4 class="card-title text-center">
+                <a href="">@Model.Name</a>
+            </h4>
+            <small class="text-muted text-center">
+                <i class="fas fa-lira-sign"></i> @Model.Price
+            </small>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-controller="Shop" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-primary btn-sm">
+                <i class="fas fa-info"></i> Details
+            </a>
+            <a class="btn btn-outline-primary btn-sm ml-1">
+                <i class="fas fa-shopping-cart"></i> Buy
+            </a>
+        </div>
+    </div>
+</div>
