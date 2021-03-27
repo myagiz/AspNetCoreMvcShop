@@ -21,19 +21,34 @@ namespace Business.Concrete
             return _categoryDal.GetAll();
         }
 
+        public Category GetById(int id)
+        {
+            return _categoryDal.GetById(id);
+        }
+
+        public Category GetByIdWithProducts(int id)
+        {
+            return _categoryDal.GetByIdWithProducts(id);
+        }
+
         public void Create(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Create(entity);
         }
 
         public void Update(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(entity);
         }
 
         public void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Delete(entity);
+        }
+
+        public void DeleteFromCategory(int categoryId, int productId)
+        {
+            _categoryDal.DeleteFromCategory(categoryId,productId);
         }
     }
 }

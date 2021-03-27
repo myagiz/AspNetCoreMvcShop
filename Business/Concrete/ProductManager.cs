@@ -42,9 +42,15 @@ namespace Business.Concrete
             return _productDal.GetProductDetails(id);
         }
 
-        public void Create(Product entity)
+        public bool Create(Product entity)
         {
-           _productDal.Create(entity);
+            if (Validate(entity))
+            {
+                _productDal.Create(entity);
+                return true;
+            }
+
+            return false;
         }
 
         public void Update(Product entity)
@@ -60,6 +66,34 @@ namespace Business.Concrete
         public int GetCountByCategory(string category)
         {
             return _productDal.GetCountByCategory(category);
+        }
+
+        public Product GetByIdWithCategories(int id)
+        {
+            return _productDal.GetByIdWithCategories(id);
+        }
+
+        public void Update(Product entity, int[] categoryIds)
+        {
+            _productDal.Update(entity,categoryIds);
+        }
+
+        public string ErrorMessage { get; set; }
+        public bool Validate(Product entity)
+        {
+            var isValid = true;
+            if (string.IsNullOrEmpty(entity.Name))
+            {
+                ErrorMessage += "Ürün ismi girmelisiniz";
+                isValid = false;
+            }
+
+            if (entity.Price<1)
+            {
+                ErrorMessage += "1 liradan büyük fiyat giriniz";
+                isValid = false;
+            }
+            return isValid;
         }
     }
 }

@@ -7,8 +7,9 @@ using Entities;
 
 namespace DataAccess.Abstract
 {
-    public interface ICategoryDal:IRepository<Category>
+    public interface ICategoryDal : IRepository<Category>
     {
-        
+        Category GetByIdWithProducts(int id);
+        void DeleteFromCategory(in int categoryId, in int productId);
     }
 }
